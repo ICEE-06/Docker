@@ -1,0 +1,42 @@
+---
+networks:
+  my_custom_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.16.0.0/16
+          gateway: 172.16.0.1
+
+
+
+services:
+  hapee-3.1:
+    image: haproxy
+    ports:
+      - "80:80"
+    volumes:
+      - "./hap_conf:/etc/hap_conf"
+    networks:
+      my_custom_network:
+        ipv4_address: 172.16.0.10
+    container_name:
+        hapee-3.1
+  web1:
+    image: httpd
+    volumes:
+      - "./public-html-web1:/usr/local/apache2/htdocs/"
+    networks:
+      my_custom_network:
+        ipv4_address: 172.16.0.11
+    container_name:
+        web1
+  web2:
+    image: httpd
+    volumes:
+      - "./public-html-web2:/usr/local/apache2/htdocs/"
+    networks:
+      my_custom_network:
+        ipv4_address: 172.16.0.12
+    container_name:
+        web2
+
