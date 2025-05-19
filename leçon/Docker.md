@@ -1,3 +1,8 @@
+# Les définitions de bases
+
+- **Conteneur Docker**: c'est une unité légère, portable, et isolé qui contient tout ce qu'il faut pour exécuter une application
+- **Image Docker**: c'est un modèle figé qui permet de créer un ou plusieurs conteneur
+
 # Docker compose :
 
 - Avec **Docker-compose** , on peut executer plusieurs **container** en même temp.
